@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: remote-config-demo
+
+  cloud:
+    config:
+      server:
+        prefix: /cloud/config
+      enabled: true
+      label: master
+      allow-override: true
+      overrideSystemProperties: true
+      overrideNone: false
+      name: ${spring.application.name}
+      uri: http://localhost:${server.port}${spring.cloud.config.server.prefix}
+      failFast: true
+    stream:
+      kafka:
+        binder:
+          min-partition-count: 5
+          auto-add-partitions: true
+          auto-create-topics: true
+    bus:
+      destination: springCloudBus-${spring.application.name}

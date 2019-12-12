@@ -1,0 +1,1 @@
+java -jar target/remote-config-demo-1.0-SNAPSHOT.jar --server.port=8084 --management.server.port=8085
